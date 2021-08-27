@@ -20,20 +20,19 @@ TODO
 
 ### Prerequisites
 
-- Node/Deno and npm/yarn: https://nodejs.org/en/download/
+- [Node/Deno and npm/yarn](https://nodejs.org/en/download/)
 - Golang: [ethclient](http://github.com/ethereum/go-ethereum/ethclient)
 - JavaScript/TypeScript: [ethers.js](https://github.com/ethers-io/ethers.js/)/web3.js
+- [Go 1.16+](https://golang.org/dl/)
+- [jq](https://stedolan.github.io/jq/download/)
 
 ### Installation
 
-- Setup an ethermint node/daemon with `ethermintd`
-  - Set [gas price](https://ethermint.dev/quickstart/binary.html#configuring-the-node) in app.toml
-  - Set [Pruning of State](https://medium.com/codechain/ethereums-state-trie-pruning-45ea73ed2c78#:~:text=In%20state%20trie%20pruning%2C%20it,the%20DB%20are%20not%20pruned.)
-  - Set "chain-id" [ethermindcli config](https://ethermint.dev/quickstart/binary.html#client-configuration)
-- Run Node
-  - Start daemon with `./init.sh`
-  - Start RPC Server with `ethermintcli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id ethermint-1 --trace`
-  - Create and add key to [Manage Key](https://ethermint.dev/quickstart/run_node.html#key-management)
+- Setup and run an local `ethermint` node
+  - Install [`ethermintd` binaries](https://ethermint.dev/quickstart/installation.html#install-binaries)
+  - Setup a [single `ethermintd` validator node](https://ethermint.dev/guides/localnet/single_node.html#manual-localnet) that runs a network locally for development
+  - Configure the node ([gas price](https://ethermint.dev/quickstart/binary.html#configuring-the-node), [Pruning of State](https://medium.com/codechain/ethereums-state-trie-pruning-45ea73ed2c78#:~:text=In%20state%20trie%20pruning%2C%20it,the%20DB%20are%20not%20pruned.) and [client config](https://ethermint.dev/quickstart/binary.html#client-configuration))
+  - Run [local node Testnet](https://ethermint.dev/guides/localnet/single_node.html#run-testnet)
 
 
 ## Usage
@@ -42,14 +41,14 @@ TODO
 
 ## Observations
 
-- Node setup on macOS Catalina fails at ```$ make install``` and throws deprication errors:
-  ```rc
-  # github.com/keybase/go-keychain
-  cgo-gcc-prolog:203:11: warning: 'SecTrustedApplicationCreateFromPath' is deprecated: first deprecated in macOS 10.15 - No longer supported [-Wdeprecated-declarations]
-  /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Security.framework/Headers/SecTrustedApplication.h:59:10: note: 'SecTrustedApplicationCreateFromPath' has been explicitly marked deprecated here
-  ```
-- Node setup On Linux Ubuntu required manually adding binaries to $PATH
-- [ethermintd config](https://ethermint.dev/quickstart/binary.html#client-configuration) doc seems outdated. Instead, the `config` is available with ```$ ethermintcli config```
-- [Key Management](https://ethermint.dev/quickstart/run_node.html#key-management) doc seems outdated. Instead use 'ethermintcli'.
-- [Using the CLI](https://ethermint.dev/quickstart/interact_node.html#using-the-cli) doc seems outdated. Instead use 'ethermintcli'.
+- Node setup on macOS Catalina fails at ```$ make install``` and throws [deprication errors](https://github.com/tharsis/ethermint/issues/505)
 
+
+- [Adding genesis account throws errors](https://ethermint.dev/guides/localnet/single_node.html#adding-genesis-accounts):
+  ```
+  Error: failed to get address from Keybase: my_validator.info: key not found [cosmos/cosmos-sdk@v0.43.0/crypto/keyring/keyring.go:465]
+  ```
+
+
+
+- `ethermintd tx bank send` dosnt work
