@@ -7,7 +7,7 @@ import "../erc20/ERC20.sol";
 * @dev TODO
 **/
 contract MassTransferERC20 is ERC20 {
-	function massTransfer(
+  function massTransfer(
     address[] calldata addresses,
     uint[] calldata values
   )
