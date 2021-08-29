@@ -12,6 +12,10 @@ _For more information on ethermint, please refer to the [ethermint documentation
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
   - [Usage](#usage)
+    - [Deploy a contract](#deploy-a-contract)
+    - [Run Tests](#run-tests)
+    - [Interact with a contract](#interact-with-a-contract)
+    - [Adding a new contracts](#adding-a-new-contracts)
   - [Observations](#observations)
 
 
@@ -33,6 +37,7 @@ We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat]
 - [Go 1.16+](https://golang.org/dl/)
 - Golang: [ethclient](http://github.com/ethereum/go-ethereum/ethclient)
 - JavaScript/TypeScript: [ethers.js](https://github.com/ethers-io/ethers.js/)/web3.js
+- [truffle 5.1.44](https://www.trufflesuite.com/)
 
 ### Installation
 
@@ -56,11 +61,32 @@ We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat]
 
 3. Configure the config to connect to your ethereum     development client/node (EVM RPC HTTP server: "0.0.0.0:8545")
 
-   ```
-   TODO
+   ```js
+     networks: {
+    // Useful for testing. The `development` name is special - truffle uses it by default
+    // if it's defined here and no other network is specified at the command line.
+    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
+    // tab if you use this network and you must also set the `host`, `port` and `network_id`
+    // options below to some value.
+    //
+    development: {
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 8545,            // Standard Ethereum port (default: none)
+     network_id: "*",       // Any network (default: none)
+    },
    ```
 
 ## Usage
+
+Define new smart ontracts at `/contracts` and tests at `/tests`. By default this repository has implemented a ERC20 Token Smart contract.
+
+### Deploy a contract
+
+0. Compile all contracts:
+
+   ```bash
+   truffle compile
+   ```
 
 1. [Deploy/Migrate](https://ethereum.org/en/developers/docs/smart-contracts/deploying/) the contract to node network
 
@@ -68,12 +94,27 @@ We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat]
    TODO
    ```
 
-2.  Interact with the contract by ...
+
+### Run Tests
+
+Compiles and runs tests
+
+```
+truffle test --network development
+```
+
+You should see the log
+
+
+### Interact with a contract
 
     ```
     TODO
     ```
 
+### Adding a new contracts
+
+TODO
 
 
 

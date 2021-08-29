@@ -34,6 +34,17 @@ Phase 2 - [RESEARCH] Deploy contract and interact
 
   ### Interacting with the Contract using web3js
 
+  ### Make transfer using geth console
+    1. Setup and Start Ethermintd node
+    2. Start geth console `geth attach http://localhost:8545`
+    3. Use [eth JSON-RPC API](https://eth.wiki/json-rpc/API) to interact with the blockchain
+       1. `eth.getBlock(60)` for block information
+       2. `eth.accounts` get account hex
+       3. 'eth.getBalance(eth.accounts[0])' get balance
+       4. `tx = eth.sendTransaction({from: eth.accounts[0], to: "0x0000000000000000000000000000000000000000", value: "0x1"})` to initiate transaction
+          1.
+       5. `eth.getTransactionReceipt(tx)`
+
 
 
 - [x] Choose ERC20 token smart contract to compile
