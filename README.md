@@ -1,18 +1,21 @@
 # ethermint-simple-smart-contract
 
-`ethermint-simple-smart-contract` is an exercise to deploy a simple smart contract with [Ethermint](https://github.com/tharsis/ethermint).
+`ethermint-simple-smart-contract` is an exercise to deploy a simple smart
+contract with [Ethermint](https://github.com/tharsis/ethermint).
 
-It includes running an ethermint node, deploying a local ERC20 token smart contract and writing a client-side program to query and transfer token balances on the deployed smart contract.
+It includes running an ethermint node, deploying a local ERC20 token smart
+contract and writing a client-side program to query and transfer token balances
+on the deployed smart contract.
 
-_For more information on ethermint, please refer to the [ethermint documentation](https://ethermint.dev/)_
+_For more information on ethermint, please refer to the [ethermint
+documentation](https://ethermint.dev/)_
 
 - [ethermint-simple-smart-contract](#ethermint-simple-smart-contract)
   - [Getting Started](#getting-started)
-    - [Architecture](#architecture)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
   - [Usage](#usage)
-    - [Deploy a contract](#deploy-a-contract)
+    - [Deploy contracts](#deploy-contracts)
     - [Run Tests](#run-tests)
     - [Interact with a contract](#interact-with-a-contract)
     - [Adding a new contracts](#adding-a-new-contracts)
@@ -21,13 +24,21 @@ _For more information on ethermint, please refer to the [ethermint documentation
 
 ## Getting Started
 
-### Architecture
+The project's architecture consists of a **client** and an **Ethermintd node**.
+The Ethermintd node represents the EVM blockchain that the client can interact
+with. The client
+[deploys/migrates](https://ethereum.org/en/developers/docs/smart-contracts/deploying/) contracts on the blockchain in order for them to be available to users of the
+Ethermint network. Once a contract is deployed to the network the client allows
+you to interact with that contract.
 
-The architecture consists of a **client** and a **Ethermintd node**. The Ethermintd node represents the EVM blockchain that the client can interact with. The client [deploys/migrates](https://ethereum.org/en/developers/docs/smart-contracts/deploying/) a contract on the blockchain in order for it to be available to users of the Ethermint network. Once a contract is deployed to the network the client allows you to interact with contract.
-
-We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat](https://hardhat.org/) to define smart contracts, connect to the node network using the network config, deploy contracts, run tests and interact with the deployed contract. I considered the following implementation options to consider:
-  - Truffle: Deploy contract with `truffle migrate --network development` or use ethers.js/web3.js to deploy and interact with contract
-  - Hardhat: Deploy and interact with Hardhat
+You can use frameworks like [Truffle](https://www.trufflesuite.com/) or
+[Hardhat](https://hardhat.org/) to 1) define smart contracts, 2) connect to the
+node network using the network config, 3) deploy contracts, 4) run tests and 5)
+interact with the deployed contract. I considered the following implementation
+options:
+  - Truffle: Deploy contract with `truffle migrate --network development` or use
+    ethers.js/web3.js to deploy and interact with contract
+  - Hardhat: Deploy and interact with contracts
   - Geth: Interact with deployed contract using the geth console
 
 ### Prerequisites
@@ -35,13 +46,17 @@ We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat]
 - [Node/Deno and npm/yarn](https://nodejs.org/en/download/)
 - [jq](https://stedolan.github.io/jq/download/)
 - [Go 1.16+](https://golang.org/dl/)
-- Golang: [ethclient](http://github.com/ethereum/go-ethereum/ethclient)
-- JavaScript/TypeScript: [ethers.js](https://github.com/ethers-io/ethers.js/)/web3.js
+- [JavaScript/TypeScript:
+  web3.js](https://web3js.readthedocs.io/en/v1.4.0/getting-started.html)
 - [truffle 5.1.44](https://www.trufflesuite.com/)
 
 ### Installation
 
-1. Setup and start a local `Ethermintd node` following the instructions in the [Ethermint docs](https://ethermint.dev/quickstart/installation.html). Before starting the node, set the [client config](https://ethermint.dev/quickstart/binary.html#client-configuration) to run a local testnet:
+1. Setup and start a local `Ethermintd node` following the instructions in the
+   [Ethermint docs](https://ethermint.dev/quickstart/installation.html). Before
+   starting the node, set the [client
+   config](https://ethermint.dev/quickstart/binary.html#client-configuration) to
+   run a local testnet:
    ```json
    {
    "chain-id": "ethermint_9000-1",
@@ -55,74 +70,75 @@ We can use frameworks like [Truffle](https://www.trufflesuite.com/) or [Hardhat]
 2. Git clone this repository into your desired location to get the client:
 
    ```bash
-      git clone https://github.com/danburck/ethermint-simple-smart-contract
-      cd ethermint-simple-smart-contract
+   git clone https://github.com/danburck/ethermint-simple-smart-contract
+   cd ethermint-simple-smart-contract
    ```
 
-3. Configure the config to connect to your ethereum     development client/node (EVM RPC HTTP server: "0.0.0.0:8545")
+3. Configure the `truffle-config` in the project root to connect to your
+   ethereum development client/node (EVM RPC HTTP server)
 
    ```js
-     networks: {
-    // Useful for testing. The `development` name is special - truffle uses it by default
-    // if it's defined here and no other network is specified at the command line.
-    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
-    // tab if you use this network and you must also set the `host`, `port` and `network_id`
-    // options below to some value.
-    //
-    development: {
-     host: "127.0.0.1",     // Localhost (default: none)
-     port: 8545,            // Standard Ethereum port (default: none)
-     network_id: "*",       // Any network (default: none)
+   networks: {
+      // Useful for testing. The `development` name is special - truffle uses it by default
+      // if it's defined here and no other network is specified at the command line.
+      // You should run a client (like ganache-cli, geth or parity) in a separate terminal
+      // tab if you use this network and you must also set the `host`, `port` and `network_id`
+      // options below to some value.
+      //
+      development: {
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
     },
    ```
 
 ## Usage
 
-Define new smart ontracts at `/contracts` and tests at `/tests`. By default this repository has implemented a ERC20 Token Smart contract.
+Define new smart ontracts at `/contracts` and tests at `/tests`. The project comes implemented with an ERC20 Token smart contract.
 
-### Deploy a contract
+### Deploy contracts
 
-0. Compile all contracts:
+1. Compile all contracts:
 
    ```bash
    truffle compile
    ```
 
-1. [Deploy/Migrate](https://ethereum.org/en/developers/docs/smart-contracts/deploying/) the contract to node network
+2. Deploy the contract to node network using:
+
+   ```bash
+   truffle migrate --network development
+   ```
+
+### Run Tests
+
+[Truffle tests](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript) are based on [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/). Compile and runs tests with
+
+```bssh
+truffle test --network development
+```
+
+### Interact with a contract
 
    ```
    TODO
    ```
 
-
-### Run Tests
-
-Compiles and runs tests
-
-```
-truffle test --network development
-```
-
-You should see the log
-
-
-### Interact with a contract
-
-    ```
-    TODO
-    ```
-
 ### Adding a new contracts
-
-TODO
+   ```
+   TODO
+   ```
 
 
 
 ## Observations
 
-- Node setup on macOS Catalina throws [deprication errors](https://github.com/tharsis/ethermint/issues/505) errors at  ```$ make install```
+- Node setup on macOS Catalina throws [deprication
+  errors](https://github.com/tharsis/ethermint/issues/505) errors at  ```$ make
+  install```
 
-- [Adding genesis account throws errors](https://ethermint.dev/guides/localnet/single_node.html#adding-genesis-accounts):
+- [Adding genesis account throws
+  errors](https://ethermint.dev/guides/localnet/single_node.html#adding-genesis-accounts):
 
   Documentation could be more clear by removing the code:
 
@@ -142,15 +158,23 @@ TODO
   ethermintd gentx my_validator 1000000stake --keyring-backend=test --chain-id=$CHAINID
   ```
 
-  and movig the a hint to [configure the node](https://ethermint.dev/quickstart/binary.html#configuring-the-node) from the [initialize section](https://ethermint.dev/guides/localnet/single_node.html#initialize-the-chain) to [run testnet](https://ethermint.dev/guides/localnet/single_node.html#run-testnet)
+  and movig the a hint to [configure the
+  node](https://ethermint.dev/quickstart/binary.html#configuring-the-node) from
+  the [initialize
+  section](https://ethermint.dev/guides/localnet/single_node.html#initialize-the-chain)
+  to [run
+  testnet](https://ethermint.dev/guides/localnet/single_node.html#run-testnet)
 
-- [`ethermintd tx bank send`](https://ethermint.dev/quickstart/interact_node.html#using-the-cli) command should include fees:
+- [`ethermintd tx bank
+  send`](https://ethermint.dev/quickstart/interact_node.html#using-the-cli)
+  command should include fees:
 
   ```bash
   ethermintd tx bank send $MY_KEY $RECIPIENT 20000aphoton --chain-id=$CHAINID --keyring-backend=test --fees='1aphoton'
   ```
 
-- Connecting hardhat to the node throws an errors with the following  `hardhat.config`:
+- Connecting hardhat to the node throws an errors with the following
+  `hardhat.config`:
 
   ```js
   module.exports = {

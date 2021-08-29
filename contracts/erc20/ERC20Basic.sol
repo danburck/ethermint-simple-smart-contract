@@ -1,7 +1,7 @@
 pragma solidity ^0.5.11;
 
 /**
- * @title ERC20Basic
+ * @title ERC20Basic interface
  * @dev Simpler version of ERC20 interface
  * @dev see https://github.com/ethereum/EIPs/issues/179
  */

@@ -273,25 +273,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"values\",\"type\":\"uint256[]\"}],\"name\":\"massTransfer\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"errorCode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol\":\"MassTransferERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20.sol\":{\"keccak256\":\"0xa531be364332cc6cec555e28539243adf5caad5bcfccd8d273c7164b736429c4\",\"urls\":[\"bzz-raw://8748b304ed636faa9bf8d6d07ed9ed437bdb1df64f66acf295b1a5f408872f8b\",\"dweb:/ipfs/QmPD9DDW5biyKRMnoc4SMbGtcfC8PSbiFUStwZDg4T9ZtJ\"]},\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20Basic.sol\":{\"keccak256\":\"0xac4a99dd35cb8256cce725082b6a1894bcb3a36cea3142cb276259af34e82771\",\"urls\":[\"bzz-raw://92ae1a40d0f56bec9f6a15393e8537d6b77e58138c38f5a5b842695fb7208bd9\",\"dweb:/ipfs/QmT5jEV9PEQ6S5gDmwyStVtZ6STAwY4MEnJP5vVjjLRkro\"]},\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol\":{\"keccak256\":\"0x03a2cf30d695b96603d91b89f739813dd0bca4f3726911ba7648e91434366527\",\"urls\":[\"bzz-raw://b40443f41db677fdea3d9b8e6b96bb9ce3c8c06a617832b27d31d80720c54a9e\",\"dweb:/ipfs/QmZA9QuNArxtBspGoHxQEVhf27pg6m9xjtU3RhH6nCRnuW\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"values\",\"type\":\"uint256[]\"}],\"name\":\"massTransfer\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"errorCode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"TODO*\",\"methods\":{},\"title\":\"MassTransferERC20 contract\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol\":\"MassTransferERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20.sol\":{\"keccak256\":\"0xedffcf8d04ac4cbb3f2ee359f55fe5b7e4c7953dc4fd47d0df73f794b896fafc\",\"urls\":[\"bzz-raw://8a00e3fa45edb1e188537cdb67df2b13f844b5841fe83672aca8c54ff4eebeb7\",\"dweb:/ipfs/QmNeaLNvFf9KGHeFWwy8LwCxUaLwnuBnmkpGkdMsFUfNcZ\"]},\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20Basic.sol\":{\"keccak256\":\"0xa9d7785bf4e328f1774cc08d6e803cc979c5bdcd3e72aae6e447f7cca9909f89\",\"urls\":[\"bzz-raw://a987009374078523071401c03c18a88e74af6b5677bba431a32dd9c411d7c65f\",\"dweb:/ipfs/Qmb5e5ftg9AAaLoc3cpyiBMbpWQonXHp6ufvu33HK142SA\"]},\"/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol\":{\"keccak256\":\"0x84b1ccbe5b66f237532b1cc8579e950a56375b5b94c9808bb42f0d01fa1747bd\",\"urls\":[\"bzz-raw://18dccb181a6b31a6d4ec83d53c2510f9179d126fb5a5c1c94d718ae8e8199d78\",\"dweb:/ipfs/QmfPvNXv9hh6N3KVkXi2PuvB128MQwz5zEstZhUHhzJHN2\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.11;\n\nimport \"../erc20/ERC20.sol\";\n\ncontract MassTransferERC20 is ERC20 {\n\tfunction massTransfer(\n    address[] calldata addresses,\n    uint[] calldata values\n  )\n    external returns (uint errorCode, uint count);\n}",
+  "source": "pragma solidity ^0.5.11;\n\nimport \"../erc20/ERC20.sol\";\n\n/**\n* @title MassTransferERC20 contract\n* @dev TODO\n**/\ncontract MassTransferERC20 is ERC20 {\n\tfunction massTransfer(\n    address[] calldata addresses,\n    uint[] calldata values\n  )\n    external returns (uint errorCode, uint count);\n}",
   "sourcePath": "/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol",
   "ast": {
     "absolutePath": "/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol",
     "exportedSymbols": {
       "MassTransferERC20": [
-        508
+        480
       ]
     },
-    "id": 509,
+    "id": 481,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 491,
+        "id": 463,
         "literals": [
           "solidity",
           "^",
@@ -299,16 +299,16 @@
           ".11"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:4"
       },
       {
         "absolutePath": "/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20.sol",
         "file": "../erc20/ERC20.sol",
-        "id": 492,
+        "id": 464,
         "nodeType": "ImportDirective",
-        "scope": 509,
-        "sourceUnit": 458,
-        "src": "26:28:5",
+        "scope": 481,
+        "sourceUnit": 430,
+        "src": "26:28:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -318,33 +318,33 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 493,
+              "id": 465,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 457,
-              "src": "86:5:5",
+              "referencedDeclaration": 429,
+              "src": "142:5:4",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$457",
+                "typeIdentifier": "t_contract$_ERC20_$429",
                 "typeString": "contract ERC20"
               }
             },
-            "id": 494,
+            "id": 466,
             "nodeType": "InheritanceSpecifier",
-            "src": "86:5:5"
+            "src": "142:5:4"
           }
         ],
         "contractDependencies": [
-          457,
-          489
+          429,
+          461
         ],
         "contractKind": "contract",
-        "documentation": null,
+        "documentation": "@title MassTransferERC20 contract\n@dev TODO*",
         "fullyImplemented": false,
-        "id": 508,
+        "id": 480,
         "linearizedBaseContracts": [
-          508,
-          457,
-          489
+          480,
+          429,
+          461
         ],
         "name": "MassTransferERC20",
         "nodeType": "ContractDefinition",
@@ -352,23 +352,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 507,
+            "id": 479,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "massTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 501,
+              "id": 473,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 497,
+                  "id": 469,
                   "name": "addresses",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "122:28:5",
+                  "scope": 479,
+                  "src": "178:28:4",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -377,20 +377,20 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 495,
+                      "id": 467,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "122:7:5",
+                      "src": "178:7:4",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 496,
+                    "id": 468,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "122:9:5",
+                    "src": "178:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -401,11 +401,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 500,
+                  "id": 472,
                   "name": "values",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "156:22:5",
+                  "scope": 479,
+                  "src": "212:22:4",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -414,19 +414,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 498,
+                      "id": 470,
                       "name": "uint",
                       "nodeType": "ElementaryTypeName",
-                      "src": "156:4:5",
+                      "src": "212:4:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 499,
+                    "id": 471,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "156:6:5",
+                    "src": "212:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -436,19 +436,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "116:66:5"
+              "src": "172:66:4"
             },
             "returnParameters": {
-              "id": 506,
+              "id": 478,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 503,
+                  "id": 475,
                   "name": "errorCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "205:14:5",
+                  "scope": 479,
+                  "src": "261:14:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -456,10 +456,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 502,
+                    "id": 474,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "205:4:5",
+                    "src": "261:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -470,11 +470,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 505,
+                  "id": 477,
                   "name": "count",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "221:10:5",
+                  "scope": 479,
+                  "src": "277:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -482,10 +482,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 504,
+                    "id": 476,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "221:4:5",
+                    "src": "277:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -495,33 +495,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "204:28:5"
+              "src": "260:28:4"
             },
-            "scope": 508,
-            "src": "95:138:5",
+            "scope": 480,
+            "src": "151:138:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 509,
-        "src": "56:179:5"
+        "scope": 481,
+        "src": "112:179:4"
       }
     ],
-    "src": "0:235:5"
+    "src": "0:291:4"
   },
   "legacyAST": {
     "absolutePath": "/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/helpers/MassTransferERC20.sol",
     "exportedSymbols": {
       "MassTransferERC20": [
-        508
+        480
       ]
     },
-    "id": 509,
+    "id": 481,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 491,
+        "id": 463,
         "literals": [
           "solidity",
           "^",
@@ -529,16 +529,16 @@
           ".11"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:4"
       },
       {
         "absolutePath": "/Users/danielburckhardt/code/ethermint-simple-smart-contract/contracts/erc20/ERC20.sol",
         "file": "../erc20/ERC20.sol",
-        "id": 492,
+        "id": 464,
         "nodeType": "ImportDirective",
-        "scope": 509,
-        "sourceUnit": 458,
-        "src": "26:28:5",
+        "scope": 481,
+        "sourceUnit": 430,
+        "src": "26:28:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -548,33 +548,33 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 493,
+              "id": 465,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 457,
-              "src": "86:5:5",
+              "referencedDeclaration": 429,
+              "src": "142:5:4",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$457",
+                "typeIdentifier": "t_contract$_ERC20_$429",
                 "typeString": "contract ERC20"
               }
             },
-            "id": 494,
+            "id": 466,
             "nodeType": "InheritanceSpecifier",
-            "src": "86:5:5"
+            "src": "142:5:4"
           }
         ],
         "contractDependencies": [
-          457,
-          489
+          429,
+          461
         ],
         "contractKind": "contract",
-        "documentation": null,
+        "documentation": "@title MassTransferERC20 contract\n@dev TODO*",
         "fullyImplemented": false,
-        "id": 508,
+        "id": 480,
         "linearizedBaseContracts": [
-          508,
-          457,
-          489
+          480,
+          429,
+          461
         ],
         "name": "MassTransferERC20",
         "nodeType": "ContractDefinition",
@@ -582,23 +582,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 507,
+            "id": 479,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "massTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 501,
+              "id": 473,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 497,
+                  "id": 469,
                   "name": "addresses",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "122:28:5",
+                  "scope": 479,
+                  "src": "178:28:4",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -607,20 +607,20 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 495,
+                      "id": 467,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "122:7:5",
+                      "src": "178:7:4",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 496,
+                    "id": 468,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "122:9:5",
+                    "src": "178:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -631,11 +631,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 500,
+                  "id": 472,
                   "name": "values",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "156:22:5",
+                  "scope": 479,
+                  "src": "212:22:4",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -644,19 +644,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 498,
+                      "id": 470,
                       "name": "uint",
                       "nodeType": "ElementaryTypeName",
-                      "src": "156:4:5",
+                      "src": "212:4:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 499,
+                    "id": 471,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "156:6:5",
+                    "src": "212:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -666,19 +666,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "116:66:5"
+              "src": "172:66:4"
             },
             "returnParameters": {
-              "id": 506,
+              "id": 478,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 503,
+                  "id": 475,
                   "name": "errorCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "205:14:5",
+                  "scope": 479,
+                  "src": "261:14:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -686,10 +686,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 502,
+                    "id": 474,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "205:4:5",
+                    "src": "261:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -700,11 +700,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 505,
+                  "id": 477,
                   "name": "count",
                   "nodeType": "VariableDeclaration",
-                  "scope": 507,
-                  "src": "221:10:5",
+                  "scope": 479,
+                  "src": "277:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -712,10 +712,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 504,
+                    "id": 476,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "221:4:5",
+                    "src": "277:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -725,20 +725,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "204:28:5"
+              "src": "260:28:4"
             },
-            "scope": 508,
-            "src": "95:138:5",
+            "scope": 480,
+            "src": "151:138:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 509,
-        "src": "56:179:5"
+        "scope": 481,
+        "src": "112:179:4"
       }
     ],
-    "src": "0:235:5"
+    "src": "0:291:4"
   },
   "compiler": {
     "name": "solc",
@@ -746,9 +746,11 @@
   },
   "networks": {},
   "schemaVersion": "3.2.5",
-  "updatedAt": "2021-08-29T14:05:59.376Z",
+  "updatedAt": "2021-08-29T21:57:37.908Z",
   "devdoc": {
-    "methods": {}
+    "details": "TODO*",
+    "methods": {},
+    "title": "MassTransferERC20 contract"
   },
   "userdoc": {
     "methods": {}

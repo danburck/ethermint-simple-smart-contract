@@ -7,7 +7,6 @@ import "./ERC20Basic.sol";
  * @dev see https://github.com/ethereum/EIPs/issues/20
  */
 contract ERC20 is ERC20Basic {
-
 	function name() public view returns (string memory);
 	function symbol() public view returns (string memory);
 	function decimals() public view returns (uint8);
