@@ -5,10 +5,10 @@
 ## Phase 0 - prep
 
 - [x] Update Node/Deno and npm/yarn: https://nodejs.org/en/download/
-- [ ] Language Choice:
-  - [ ] Golang (recommended): [geth](https://geth.ethereum.org/)
-  - [ ] JavaScript/TypeScript (recommended): [ethers.js](https://github.com/ethers-io/ethers.js/)/web3.js
-- [ ] Github repo
+- [x] Language Choice:
+  - [x] Golang (recommended): [geth](https://geth.ethereum.org/)
+  - [x] JavaScript/TypeScript (recommended): [ethers.js](https://github.com/ethers-io/ethers.js/)/web3.js
+- [x] Github repo
 
 
 ## Phase 1 -  Node
@@ -58,7 +58,7 @@
     => Hardhat offers: smart contract compilaton, write and run tests and contract deployment
   - [x] Choose Testing framework
     => Waffle https://getwaffle.io/
-    => Check out ERC20 example
+    => Check out [ERC20 documentation]((https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20-totalSupply--))
   - [ ] Plan out client-side program to query and transfer token balances on the deployed smart contract
 
 

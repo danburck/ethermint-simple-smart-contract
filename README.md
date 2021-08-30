@@ -51,8 +51,12 @@ options:
 - [truffle 5.1.44](https://www.trufflesuite.com/)
 
 ### Installation
+1. Install npm packages (e.g. solidity linter solhint):
+   ```
+   npm install
+   ```
 
-1. Setup and start a local `Ethermintd node` following the instructions in the
+2. Setup and start a local `Ethermintd node` following the instructions in the
    [Ethermint docs](https://ethermint.dev/quickstart/installation.html). Before
    starting the node, set the [client
    config](https://ethermint.dev/quickstart/binary.html#client-configuration) to
@@ -67,14 +71,14 @@ options:
    }
    ```
 
-2. Git clone this repository into your desired location to get the client:
+3. Git clone this repository into your desired location to get the client:
 
    ```bash
    git clone https://github.com/danburck/ethermint-simple-smart-contract
    cd ethermint-simple-smart-contract
    ```
 
-3. Configure the `truffle-config` in the project root to connect to your
+4. Configure the `truffle-config` in the project root to connect to your
    ethereum development client/node (EVM RPC HTTP server)
 
    ```js
@@ -128,7 +132,6 @@ truffle test --network development
    ```
    TODO
    ```
-
 
 
 ## Observations
