@@ -16,7 +16,6 @@ contract('BasicToken', accounts => {
 	const _decimals = 18;
 	const _symbol = "DAN";
 
-
 	before(async () => {
 		basicToken = await BasicToken.new(
 			_totalSupply,
@@ -62,9 +61,13 @@ contract('BasicToken', accounts => {
 	});
 
 	describe('#transfer', async() => {
-		// before(async () => {
-		// 	// REFACTOR DRY
-		// })
+		const value = 1000;
+
+		before(async () => {
+			// REFACTOR DRY
+			const to = await web3.eth.accounts.create().address;
+			let tx = await basicToken.transfer(to, value);
+		})
 
 
 
@@ -79,10 +82,6 @@ contract('BasicToken', accounts => {
 		// });
 
 		it.only('should emit a Transfer Event', async() => {
-			const to = await web3.eth.accounts.create().address;
-			const value = 1000;
-			let tx = await basicToken.transfer(to, value);
-
 			truffleAssert.eventEmitted(tx, 'Transfer', (ev) => {
 				return(
 					ev.from === from &&
