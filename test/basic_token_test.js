@@ -1,7 +1,7 @@
-const { expect } = require("chai");
-const { assert } = require("console");
-
+const Web3 = require("web3");
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const BasicToken = artifacts.require("BasicToken");
+const truffleAssert = require('truffle-assertions');
 
 /*
 	TODO Table Driven Testing
@@ -9,12 +9,13 @@ const BasicToken = artifacts.require("BasicToken");
 	Js: https://medium.com/fsmk-engineering/table-driven-tests-in-javascript-c0c9305110ce
  */
 contract('BasicToken', accounts => {
-	const from = accounts[0]
-	let basicToken
+	const from = accounts[0];
+	let basicToken;
 	const _totalSupply = 1000000000000000;
 	const _name = "Dan Coin";
 	const _decimals = 18;
 	const _symbol = "DAN";
+
 
 	before(async () => {
 		basicToken = await BasicToken.new(
@@ -32,7 +33,7 @@ contract('BasicToken', accounts => {
 		});
 	});
 
-	describe('#synbol', async() => {
+	describe('#symbol', async() => {
 		it('should return the symbol', async() => {
 			const symbol = await basicToken.symbol();
 			expect(symbol).to.be.equal(_symbol);
@@ -59,6 +60,46 @@ contract('BasicToken', accounts => {
 			expect(balance.toNumber()).to.be.eq(_totalSupply);
 		});
 	});
+
+	describe('#transfer', async() => {
+		// before(async () => {
+		// 	// REFACTOR DRY
+		// })
+
+
+
+		// it('should return true if the transfer is successful', async() => {
+		// 	// TODO ASK IF THERE IS A BETTER WAY WITH FIXTURES
+		// 	const to = await web3.eth.accounts.create().address;
+		// 	const value = 1000;
+		// 	let tx = await basicToken.transfer(to, value);
+		// 	console.log(tx);
+		// 	expect(tx).to.be.true;
+
+		// });
+
+		it.only('should emit a Transfer Event', async() => {
+			const to = await web3.eth.accounts.create().address;
+			const value = 1000;
+			let tx = await basicToken.transfer(to, value);
+
+			truffleAssert.eventEmitted(tx, 'Transfer', (ev) => {
+				return(
+					ev.from === from &&
+					ev.to === to &&
+					ev.value.toNumber() === 1000
+				)
+			});
+		});
+
+		it('should move tokens from the caller to recipient', async() => {
+			// expect()
+			// tx
+			// expect(tx).to.be.eq(_totalSupply);
+		});
+	});
+
+
 
 
 	// TODO Test Query and transfer of tokens

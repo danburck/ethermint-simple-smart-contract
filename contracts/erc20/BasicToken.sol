@@ -137,7 +137,7 @@ contract BasicToken is ERC20 {
   }
 
   /**
-   * @dev Get the mount of tokens owned by account
+   * @dev Get the amount of tokens owned by account
    * @param _owner The address of the owner
    * @return The amount of tokens owned by account
    */
