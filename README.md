@@ -53,7 +53,7 @@ options:
 ### Installation
 1. Install npm packages (e.g. solidity linter solhint):
    ```
-   npm install
+   $ npm install
    ```
 
 2. Setup and start a local `Ethermintd node` following the instructions in the
@@ -74,8 +74,8 @@ options:
 3. Git clone this repository into your desired location to get the client:
 
    ```bash
-   git clone https://github.com/danburck/ethermint-simple-smart-contract
-   cd ethermint-simple-smart-contract
+   $ git clone https://github.com/danburck/ethermint-simple-smart-contract
+   $ cd ethermint-simple-smart-contract
    ```
 
 4. Configure the `truffle-config` in the project root to connect to your
@@ -105,34 +105,56 @@ Define new smart ontracts at `/contracts` and tests at `/tests`. The project com
 1. Compile all contracts:
 
    ```bash
-   truffle compile
+   $ truffle compile
    ```
 
 2. Deploy the contract to node network using:
 
    ```bash
-   truffle migrate --network development
+   $ truffle migrate --network development
    ```
 
 ### Run Tests
 
-[Truffle tests](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript) are based on [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/). Compile and runs tests with
+[Truffle tests](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript) are based on [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/). To compile and run the all unit tests, run:
 
-```bssh
-truffle test --network development
+```bash
+$ truffle test --network development
 ```
 
 ### Interact with a contract
 
+Run the `erc20.js` script to deploy the ERC20 token smart contract and invoke balance queries and token transfers:
+
+   ```bash
+   $ node scripts/erc20.js
    ```
-   TODO
-   ```
+
+Find a log of query results and transfer receipts, including information such as `contract`, `address`, `gasUsed`, `totalSupply`, `balances` and more.
 
 ### Adding a new contracts
-   ```
-   TODO
-   ```
+To add new contracts follow the following steps:
 
+```bash
+  # Add a new contract
+  $ touch contracts/MyContract.sol
+
+  # Write a new Contract
+
+  # Compile your contract.
+  $ truffle compile
+
+  # Create unit tests
+  $ touch test/my_contract.js
+
+  # Run tests
+
+  # Migrate your contract
+  $ truffle migrate
+
+  # Write a script to interact with your contract
+  $ touch scripts/my_contract.js
+```
 
 ## Observations
 
