@@ -1,28 +1,45 @@
+const { expect } = require("chai");
 const Web3 = require("web3");
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const BasicToken = artifacts.require("BasicToken");
-const { deploy, interact } = require("../scripts/erc20.js");
+const {
+	getFirstAccount,
+  createAccount,
+  displayDecimal,
+  deploy,
+  queryTotalSupply,
+  queryBalanceOf,
+  transfer
+} = require("../scripts/erc20.js");
 
 contract("BasicToken", accounts => {
 	const from = accounts[0];
-	const _totalSupply = 1000000000000000;
-	const _name = "Dan Coin";
-	const _decimals = 18;
-	const _symbol = "DAN";
-	const args = [
-		_totalSupply,
-		_name,
-		_decimals,
-		_symbol
-	];
+	const TOTAL_SUPPLY = 1000000000000000;
+	const NAME = "Dan Coin";
+	const DECIMALS = 18;
+	const SYMBOL = "DAN";
+	const VALUE = 2000000;
+	const ARGS = [
+		TOTAL_SUPPLY,
+		NAME,
+		DECIMALS,
+		SYMBOL
+	]
 
 	before(async () => {
 
 	})
 
+	describe("#displayDecimal", async() => {
+		it.only("should return a decimal", async() => {
+			let value = 100000000000000;
+			expect(displayDecimal(value)).to.be.equal(value / 10 ** DECIMALS);
+		})
+	})
+
 	// TODO: Test #deploy, #interact
 	describe("#deploy", async() => {
-		it.only("should return the contract instance if successfull ", async() => {
+		it("should return the contract instance if successfull ", async() => {
 			// const from = await getFirstAccount();
 			tx = await deploy(BasicToken, from, args);
 			console.log(tx);

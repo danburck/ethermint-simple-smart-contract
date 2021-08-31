@@ -27,6 +27,15 @@ const getFirstAccount = async() => {
 }
 
 /**
+ * @dev Display a token value as decimal
+ * @paaram The actual amount of tokens
+ * @return The decimal
+ */
+const displayDecimal = (value) => {
+  return value / 10 ** DECIMALS
+}
+
+/**
  * @dev Create a new account
  * @return The address of the account
  */
@@ -36,7 +45,7 @@ const createAccount = async() => {
 }
 
 /**
- * @dev Deplay a contract in order to interact with it on a ethereum blockchain.
+ * @dev Deploy a contract in order to interact with it on a ethereum blockchain.
  * When you create a new contract object you give it the json interface of the
  * respective smart contract and web3 will auto convert all calls into low level
  * ABI calls over RPC for you.
@@ -64,11 +73,15 @@ const deploy = async(contractData, from, args=[]) => {
       gasPrice: 1
     })
     .then(function(contractInstance) {
-      console.log(
-        `\n********* DEPLOYED: ********* \n` +
-        `Deployed contract: ${contractData.contractName} \n` +
-        `Address: ${contractInstance.options.address}`
-      );
+      const log =
+        `
+          ********* DEPLOYED: *********
+          Deployed contract: ${contractData.contractName}
+          Contract Address: ${contractInstance.options.address}
+          Host: ${contractInstance._requestManager.provider.host}
+        `;
+      console.log(log);
+
       return contractInstance;
     })
     .catch(function(err) {
@@ -90,11 +103,13 @@ const queryTotalSupply = async(from, token) => {
     gasPrice: 1,
   })
   .then(function(totalSupply) {
-    console.log(
-      `\n********* QUERY ********* \n` +
-      `Total supply of tokens: ${totalSupply} ${SYMBOL}`
-    );
-    // return totalSupply;
+    const log =
+        `
+          ********* QUERY *********
+          Total supply of tokens: ${displayDecimal(totalSupply)} ${SYMBOL}
+        `;
+    console.log(log);
+    return totalSupply;
   })
   .catch(function(err) {
     console.log(err);
@@ -115,11 +130,13 @@ const queryBalanceOf = async(from, token) => {
     gasPrice: 1,
   })
   .then(function(balance) {
-    console.log(
-      `\n********* QUERY ********* \n` +
-      `Address: ${from} \n` +
-      `Balance: ${balance} ${SYMBOL}`
-    );
+    const log =
+        `
+          ********* QUERY *********
+          Address: ${from}
+          Balance: ${displayDecimal(balance)} ${SYMBOL}
+        `;
+    console.log(log);
     return balance;
   })
   .catch(function(err) {
@@ -134,7 +151,7 @@ const queryBalanceOf = async(from, token) => {
  * @param from The sender of the contract
  * @param to The receiver of the transferred token
  * @param value The amount of transferred tokens
- * @return The contract instance
+ * @return The transaction receipt
  */
 const transfer = async(token, from, to, value) => {
   await token.methods.transfer(to, value).send({
@@ -145,17 +162,19 @@ const transfer = async(token, from, to, value) => {
   .on('transactionHash', function(hash){ })
   .on('confirmation', function(confirmationNumber, receipt){})
   .on('receipt', function(receipt){
-    // console.log(receipt);
-    console.log(
-      `\n********* TRANSFER RECEIPT: ********* \n` +
-      `Gas used: ${receipt.gasUsed} \n` +
-      `From: ${from} \n` +
-      `Block number: ${receipt.blockNumber}`
-    );
+    const log =
+        `
+          ********* TRANSFER RECEIPT: *********
+          Gas used: ${displayDecimal(receipt.gasUsed)}
+          From: ${from}
+          Block number: ${receipt.blockNumber}
+        `;
+    console.log(log);
+
+    return receipt;
   })
   // If there's an out of gas error the second parameter is the receipt.
   .on('error', console.error);
-
 }
 
 /**
@@ -186,6 +205,7 @@ main()
 module.exports = {
   getFirstAccount,
   createAccount,
+  displayDecimal,
   deploy,
   queryTotalSupply,
   queryBalanceOf,
