@@ -8905,7 +8905,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.5",
-  "updatedAt": "2021-08-31T01:01:55.354Z",
+  "updatedAt": "2021-08-31T08:44:11.068Z",
   "devdoc": {
     "author": "https://github.com/alesanroRefactored by https://github.com/danburck*",
     "details": "Implements EIP20 token standard:https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md",
