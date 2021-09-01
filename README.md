@@ -17,7 +17,7 @@ documentation](https://ethermint.dev/)_
   - [Usage](#usage)
     - [Deploy contracts](#deploy-contracts)
     - [Run Tests](#run-tests)
-    - [Interact with a contract](#interact-with-a-contract)
+    - [Interact with the contract](#interact-with-the-contract)
     - [Adding a new contracts](#adding-a-new-contracts)
   - [Observations](#observations)
 
@@ -122,7 +122,7 @@ Define new smart ontracts at `/contracts` and tests at `/tests`. The project com
 $ truffle test --network development
 ```
 
-### Interact with a contract
+### Interact with the contract
 
 Run the `erc20.js` script to deploy the ERC20 token smart contract and invoke balance queries and token transfers:
 

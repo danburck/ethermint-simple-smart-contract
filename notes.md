@@ -65,7 +65,7 @@
 ## Phase 3 - Implement solution
 - Contract
   - [x] Compile and deploy an [ERC20 token smart contract](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) to the local network using truffle
-  - [ ] Unit tests for the contract => model tests
+  - [ ] Unit tests => like model tests
     - [ ] HOW DO I ADD MORE ADDRESSES FOR TESTING?
 
 - Script
