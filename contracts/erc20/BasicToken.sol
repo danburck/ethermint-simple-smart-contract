@@ -3,6 +3,7 @@ pragma solidity ^0.5.11;
 import "./ERC20.sol";
 import "../helpers/MassTransferERC20.sol";
 
+
 /**
 * @title BasicToken contract
 * @dev Implements EIP20 token standard:
