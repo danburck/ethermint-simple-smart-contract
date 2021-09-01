@@ -64,7 +64,7 @@ contract("BasicToken", accounts => {
   });
 
   describe("#transfer", () => {
-    describe.only("is successful", () => {
+    describe("is successful", () => {
       const tx = () => basicToken.transfer(to, VALUE);
 
       it("should return a transfer object", async() => {
@@ -101,7 +101,48 @@ contract("BasicToken", accounts => {
         );
       });
     });
+
+    describe("is not successful", () => {
+      const tx = () => basicToken.transfer(to, VALUE);
+
+      it("should not eturn a transfer object", async() => {
+        const obj = await tx();
+        assert.containsAllKeys(obj, ['tx', 'receipt', 'logs']);
+      });
+
+      it("should emit a transfer event", async() => {
+        const obj = await tx();
+        truffleAssert.eventEmitted(obj, "Transfer", (ev) => {
+          return(
+            ev.from === from &&
+            ev.to === to &&
+            ev.value.toNumber() === VALUE
+          )
+        });
+      });
+
+      it.only("should not increase the recipient balance", async() => {
+        const balanceBefore = await basicToken.balanceOf(to);
+        await tx();
+        const balanceAfter = await basicToken.balanceOf(to);
+        expect(balanceAfter.toNumber()).to.be.equal(
+          balanceBefore.toNumber() + VALUE
+        );
+      });
+
+      it("should decrease the callers balance", async() => {
+        const balanceBefore = await basicToken.balanceOf(from);
+        await tx();
+        const balanceAfter = await basicToken.balanceOf(from);
+        expect(balanceAfter.toNumber()).to.be.equal(
+          balanceBefore.toNumber() - VALUE
+        );
+      });
+    });
   });
+
+
+
 
 
   // TODO Table Driven Testing & FIXTRURES
