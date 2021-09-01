@@ -59,7 +59,7 @@
   - [x] Choose Testing framework
     => Waffle https://getwaffle.io/
     => Check out [ERC20 documentation]((https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20-totalSupply--))
-  - [ ] Plan out client-side program to query and transfer token balances on the deployed smart contract
+  - [x] Plan out client-side program to query and transfer token balances on the deployed smart contract
 
 
 ## Phase 3 - Implement solution
@@ -76,7 +76,7 @@
 
 
 
-
+asd
 ## Learnings
 
 - Adding binaries to $PATH: [https://golang.org/doc/gopath_code#GOPATH](https://golang.org/doc/gopath_code#GOPATH)

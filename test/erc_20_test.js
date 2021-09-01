@@ -31,7 +31,7 @@ contract("BasicToken", accounts => {
   })
 
   describe("#displayDecimal", async() => {
-    it.only("should return a decimal", async() => {
+    it("should return a decimal", async() => {
       let value = 100000000000000;
       expect(displayDecimal(value)).to.be.equal(value / 10 ** DECIMALS);
     })

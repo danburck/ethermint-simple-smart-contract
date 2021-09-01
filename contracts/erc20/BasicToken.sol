@@ -32,7 +32,8 @@ contract BasicToken is ERC20 {
   uint256 public _totalSupply;
 
   /**
-   * @dev Contract constructor. Function is invoked by TODO
+   * @dev Contract constructor. Function is invoked by inittial deployer of the
+   *    contract
    *    - Gives the creator all initial tokens
    *    - Updates total supply
    * 		- Sets the values for name, symbol, and decimals. All three of these
@@ -91,7 +92,7 @@ contract BasicToken is ERC20 {
   }
 
   /**
-   * @dev Moves amount tokens from the caller’s account to recipient.
+   * @dev Moves an amount of tokens from the caller’s account to recipient.
    * @dev Emits a Transfer event.
    * @param _to The address of the account to transfer tokens to
    * @param _value The amount of tokens

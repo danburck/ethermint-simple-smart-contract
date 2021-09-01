@@ -167,6 +167,7 @@ const transfer = async(token, from, to, value) => {
           ********* TRANSFER RECEIPT: *********
           Gas used: ${displayDecimal(receipt.gasUsed)}
           From: ${from}
+          To: ${to}
           Block number: ${receipt.blockNumber}
         `;
     console.log(log);
@@ -193,6 +194,7 @@ const main = async() =>  {
   await queryBalanceOf(from, token);
   await transfer(token, from, to, VALUE);
   await queryBalanceOf(from, token);
+  await queryBalanceOf(to, token);
 }
 
 main()
