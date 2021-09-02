@@ -69,8 +69,8 @@
     - [ ] HOW DO I ADD MORE ADDRESSES FOR TESTING?
 
 - Script
-  - [ ] Write a small client-side program to query and transfer token balances on the deployed smart contract using web3
-    - [ ] Unit test for script => like API tests
+  - [x] Write a small client-side program to query and transfer token balances on the deployed smart contract using web3
+    - [OutOfScope] Unit test for script => like API tests
 
 - [ ] Fix style and write comments
 

@@ -17,13 +17,17 @@ contract("BasicToken", accounts => {
     SYMBOL
   ]
 
-  before( async () => {
+  before(async () => {
     basicToken = await BasicToken.new(...ARGS);
     to = await web3.eth.accounts.create().address;
   })
 
+  after(async () => {
+    await basicToken.kill;
+  })
+
   describe("#constructor", async () => {
-    it("should a basic token instance ", async () => {
+    it("should return a basic token instance ", async () => {
       assert.instanceOf(basicToken, BasicToken);
     });
   });
@@ -67,14 +71,14 @@ contract("BasicToken", accounts => {
     describe("is successful", () => {
       const tx = () => basicToken.transfer(to, VALUE);
 
-      it("should return a transfer object", async() => {
-        const obj = await tx();
-        assert.containsAllKeys(obj, ['tx', 'receipt', 'logs']);
+      it("should return a receipt with status true", async() => {
+        const result = await tx();
+        expect(result.receipt.status).to.be.true;
       });
 
       it("should emit a transfer event", async() => {
-        const obj = await tx();
-        truffleAssert.eventEmitted(obj, "Transfer", (ev) => {
+        const result = await tx();
+        truffleAssert.eventEmitted(result, "Transfer", (ev) => {
           return(
             ev.from === from &&
             ev.to === to &&
@@ -102,46 +106,42 @@ contract("BasicToken", accounts => {
       });
     });
 
-    describe("is not successful", () => {
-      const tx = () => basicToken.transfer(to, VALUE);
+    describe("is unsuccessful", () => {
+      const tx = () => basicToken.transfer(to, TOTAL_SUPPLY + 10000);
 
-      it("should not eturn a transfer object", async() => {
-        const obj = await tx();
-        assert.containsAllKeys(obj, ['tx', 'receipt', 'logs']);
+      it("should should revert with an error", async () => {
+        await truffleAssert.reverts(
+          tx(),
+          'Transaction'
+        );
+      })
+
+      it("should not emit a Transfer Event", async() => {
+        const result = await tx().catch((error) => error);
+        expect(result.logs).to.be.undefined;
       });
 
-      it("should emit a transfer event", async() => {
-        const obj = await tx();
-        truffleAssert.eventEmitted(obj, "Transfer", (ev) => {
-          return(
-            ev.from === from &&
-            ev.to === to &&
-            ev.value.toNumber() === VALUE
-          )
-        });
+      it("should return a receipt with status false", async() => {
+        const result = await tx().catch((error) => error);
+        expect(result.receipt.status).to.be.false;
       });
 
-      it.only("should not increase the recipient balance", async() => {
+      it("should not increase the recipient balance", async() => {
         const balanceBefore = await basicToken.balanceOf(to);
-        await tx();
+        await tx().catch((error) => error);
         const balanceAfter = await basicToken.balanceOf(to);
-        expect(balanceAfter.toNumber()).to.be.equal(
-          balanceBefore.toNumber() + VALUE
-        );
+        expect(balanceAfter.toNumber()).to.be.equal(balanceBefore.toNumber());
       });
 
-      it("should decrease the callers balance", async() => {
+      it("should not decrease the callers balance", async() => {
         const balanceBefore = await basicToken.balanceOf(from);
-        await tx();
+        await tx().catch((error) => error);
         const balanceAfter = await basicToken.balanceOf(from);
-        expect(balanceAfter.toNumber()).to.be.equal(
-          balanceBefore.toNumber() - VALUE
-        );
+        expect(balanceAfter.toNumber()).to.be.equal(balanceBefore.toNumber());
       });
     });
   });
-
-
+})
 
 
 
@@ -150,15 +150,8 @@ contract("BasicToken", accounts => {
   // Js: https://medium.com/fsmk-engineering/table-driven-tests-in-javascript-c0c9305110ce
 
 
-    // describe("is not succesful", async() => {
-    //   // TODO How to test failing contracts?
-    //   it("should not emit a Transfer Event", async() => {
-    //     const to = await web3.eth.accounts.create().address;
-    //     const value = TOTAL_SUPPLY + 1000;
-    //     let tx = await basicToken.transfer(to, value);
-
-    //     truffleAssert.eventNotEmitted(tx, "Transfer");
-    //   });
-    // })
-  });
-})
+// when the contract is activated
+   // when the contract is not paused
+      // when the offering period has started
+         // when the offering period has ended
+             // it should revert

@@ -119,7 +119,7 @@ Define new smart ontracts at `/contracts` and tests at `/tests`. The project com
 [Truffle tests](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript) are based on [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/). To compile and run the all unit tests, run:
 
 ```bash
-$ truffle test --network development
+$ truffle test test/basic_token_test.js --network development
 ```
 
 ### Interact with the contract
