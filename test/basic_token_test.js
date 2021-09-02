@@ -17,14 +17,11 @@ contract("BasicToken", accounts => {
     DECIMALS,
     SYMBOL
   ]
+  let basicToken
 
   before(async () => {
     basicToken = await BasicToken.new(...ARGS);
     to = await web3.eth.accounts.create().address;
-  })
-
-  after(async () => {
-    await basicToken.kill;
   })
 
   describe("#constructor", async () => {
@@ -67,7 +64,7 @@ contract("BasicToken", accounts => {
   ]
 
   getterTests.forEach((test) => {
-    describe.only(`#${test.name}`, async () => {
+    describe(`#${test.name}`, async () => {
       it(`return the ${test.name}`, async() => {
         let expected = await basicToken[test.name](...test.params);
         test.number && (expected = expected.toNumber());
@@ -75,41 +72,6 @@ contract("BasicToken", accounts => {
       });
     });
   })
-
-  // describe("#name", async () => {
-  //   it("should return the name", async() => {
-  //     const name = await basicToken.name();
-  //     expect(name).to.be.equal(NAME);
-  //   });
-  // });
-
-  // describe("#symbol", async () => {
-  //   it("should return the symbol", async() => {
-  //     const symbol = await basicToken.symbol();
-  //     expect(symbol).to.be.equal(SYMBOL);
-  //   });
-  // });
-
-  // describe("#decimals", async () => {
-  //   it("should return the decimals", async() => {
-  //     const decimals = await basicToken.decimals();
-  //     expect(decimals.toNumber()).to.be.equal(DECIMALS);
-  //   });
-  // });
-
-  // describe("#totalSupply", async () => {
-  //   it("should return the totalSupply", async() => {
-  //     const totalSupply = await basicToken.totalSupply();
-  //     expect(totalSupply.toNumber()).to.be.eq(TOTAL_SUPPLY);
-  //   });
-  // });
-
-  // describe("#balanceOf", async () => {
-  //   it("should return the amount of tokens owned by account", async() => {
-  //     const balance = await basicToken.balanceOf(from);
-  //     expect(balance.toNumber()).to.be.eq(TOTAL_SUPPLY);
-  //   });
-  // });
 
   describe("#transfer", () => {
     describe("is successful", () => {
@@ -186,16 +148,3 @@ contract("BasicToken", accounts => {
     });
   });
 })
-
-
-
-  // TODO Table Driven Testing & FIXTRURES
-  // Go: https://www.codementor.io/@cyantarek15/how-table-driven-tests-makes-writing-unit-tests-exciting-and-fun-in-go-15g1wzdf7g
-  // Js: https://medium.com/fsmk-engineering/table-driven-tests-in-javascript-c0c9305110ce
-
-
-// when the contract is activated
-   // when the contract is not paused
-      // when the offering period has started
-         // when the offering period has ended
-             // it should revert
