@@ -2,6 +2,7 @@ const Web3 = require("web3");
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const BasicToken = artifacts.require("BasicToken");
 const truffleAssert = require("truffle-assertions");
+const _ = require("lodash");
 
 contract("BasicToken", accounts => {
   const from = accounts[0];
@@ -32,40 +33,83 @@ contract("BasicToken", accounts => {
     });
   });
 
-  describe("#name", async () => {
-    it("should return the name", async() => {
-      const name = await basicToken.name();
-      expect(name).to.be.equal(NAME);
-    });
-  });
+  const getterTests = [
+    {
+      name: "name",
+      params: [],
+      number: false,
+      actual: NAME
+    },
+    {
+      name: "symbol",
+      params: [],
+      number: false,
+      actual: SYMBOL
+    },
+    {
+      name: "decimals",
+      params: [],
+      number: true,
+      actual: DECIMALS
+    },
+    {
+      name: "totalSupply",
+      params: [],
+      number: true,
+      actual: TOTAL_SUPPLY
+    },
+    {
+      name: "balanceOf",
+      params: [from],
+      number: true,
+      actual: TOTAL_SUPPLY
+    }
+  ]
 
-  describe("#symbol", async () => {
-    it("should return the symbol", async() => {
-      const symbol = await basicToken.symbol();
-      expect(symbol).to.be.equal(SYMBOL);
+  getterTests.forEach((test) => {
+    describe.only(`#${test.name}`, async () => {
+      it(`return the ${test.name}`, async() => {
+        let expected = await basicToken[test.name](...test.params);
+        test.number && (expected = expected.toNumber());
+        expect(expected).to.be.equal(test.actual);
+      });
     });
-  });
+  })
 
-  describe("#decimals", async () => {
-    it("should return the decimals", async() => {
-      const decimals = await basicToken.decimals();
-      expect(decimals.toNumber()).to.be.equal(DECIMALS);
-    });
-  });
+  // describe("#name", async () => {
+  //   it("should return the name", async() => {
+  //     const name = await basicToken.name();
+  //     expect(name).to.be.equal(NAME);
+  //   });
+  // });
 
-  describe("#totalSupply", async () => {
-    it("should return the totalSupply", async() => {
-      const totalSupply = await basicToken.totalSupply();
-      expect(totalSupply.toNumber()).to.be.eq(TOTAL_SUPPLY);
-    });
-  });
+  // describe("#symbol", async () => {
+  //   it("should return the symbol", async() => {
+  //     const symbol = await basicToken.symbol();
+  //     expect(symbol).to.be.equal(SYMBOL);
+  //   });
+  // });
 
-  describe("#balanceOf", async () => {
-    it("should return the amount of tokens owned by account", async() => {
-      const balance = await basicToken.balanceOf(from);
-      expect(balance.toNumber()).to.be.eq(TOTAL_SUPPLY);
-    });
-  });
+  // describe("#decimals", async () => {
+  //   it("should return the decimals", async() => {
+  //     const decimals = await basicToken.decimals();
+  //     expect(decimals.toNumber()).to.be.equal(DECIMALS);
+  //   });
+  // });
+
+  // describe("#totalSupply", async () => {
+  //   it("should return the totalSupply", async() => {
+  //     const totalSupply = await basicToken.totalSupply();
+  //     expect(totalSupply.toNumber()).to.be.eq(TOTAL_SUPPLY);
+  //   });
+  // });
+
+  // describe("#balanceOf", async () => {
+  //   it("should return the amount of tokens owned by account", async() => {
+  //     const balance = await basicToken.balanceOf(from);
+  //     expect(balance.toNumber()).to.be.eq(TOTAL_SUPPLY);
+  //   });
+  // });
 
   describe("#transfer", () => {
     describe("is successful", () => {
