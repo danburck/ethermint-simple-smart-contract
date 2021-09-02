@@ -203,13 +203,3 @@ main()
     console.error(error);
     process.exit(1);
   });
-
-module.exports = {
-  getFirstAccount,
-  createAccount,
-  displayDecimal,
-  deploy,
-  queryTotalSupply,
-  queryBalanceOf,
-  transfer
-};
