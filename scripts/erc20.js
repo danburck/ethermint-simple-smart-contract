@@ -1,6 +1,3 @@
-const { ConsoleErrorListener } = require("antlr4/error/ErrorListener");
-const IteratorClose = require("es-abstract/2015/IteratorClose");
-const { toArray } = require("lodash");
 const Web3 = require("web3");
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const BasicToken = require("../build/contracts/BasicToken")
@@ -18,7 +15,7 @@ const ARGS = [
   SYMBOL
 ]
 /**
- * @dev Get the first account
+ * @dev Gets the first account
  * @return The first account
  */
 const getFirstAccount = async() => {
@@ -27,7 +24,7 @@ const getFirstAccount = async() => {
 }
 
 /**
- * @dev Display a token value as decimal
+ * @dev Displays a token value as decimal
  * @paaram The actual amount of tokens
  * @return The decimal
  */
@@ -36,7 +33,7 @@ const displayDecimal = (value) => {
 }
 
 /**
- * @dev Create a new account
+ * @dev Creates a new account
  * @return The address of the account
  */
 const createAccount = async() => {
@@ -45,10 +42,10 @@ const createAccount = async() => {
 }
 
 /**
- * @dev Deploy a contract in order to interact with it on a ethereum blockchain.
- * When you create a new contract object you give it the json interface of the
- * respective smart contract and web3 will auto convert all calls into low level
- * ABI calls over RPC for you.
+ * @dev Deploys a contract in order to interact with it on an ethereum
+ *  blockchain. Pass the json interface of the respective smart contract as
+ *  param and web3 will auto convert all calls into low level ABI calls over
+ *  RPC.
  * @param contractData The compiled smart contract artifact
  * @param from The sender of the contract, who also pays the gas fees
  * @param args The arguments which get passed to the constructor on deployment
@@ -56,42 +53,40 @@ const createAccount = async() => {
  */
 const deploy = async(contractData, from, args=[]) => {
   // Instantiate a new contract with all its methods and events defined in its
-  //  json interface object. Web3 then auto converts all calls into low level
-  //  ABI calls over RPC.
+  //  json interface object.
   const contract = new web3.eth.Contract(contractData.abi);
   return contract
-    // Deploy the contract to the blockchain. After successful deployment the
-    // promise will resolve with a new contract instance.
+    // Deploy and sends the contract to the blockchain. After successful
+    // deployment the promise will resolve with a new contract instance.
     .deploy({
       data: contractData.bytecode,
       arguments: args,
     })
-    // Send a they deploymnet transaction to the contract and execute its method
     .send({
       from: from,
       gas: 4000000,
       gasPrice: 1
     })
-    .then(function(contractInstance) {
+    .then((contractInstance) => {
       const log =
         `
-          ********* DEPLOYED: *********
+          ********* DEPLOYED *********
           Deployed contract: ${contractData.contractName}
+          COIN: $${SYMBOL}
           Contract Address: ${contractInstance.options.address}
           Host: ${contractInstance._requestManager.provider.host}
         `;
       console.log(log);
-
       return contractInstance;
     })
-    .catch(function(err) {
+    .catch((err) => {
       console.log(err);
       process.exit();
     });
 }
 
 /**
- * @dev Queries and logs the the total supply for tokens
+ * @dev Queries and logs the total supply of tokens
  * @param token The deployed ERC20 token contract instance
  * @param from The sender of the contract
  * @return The total supply of tokens
@@ -102,7 +97,7 @@ const queryTotalSupply = async(from, token) => {
     gas: 4000000,
     gasPrice: 1,
   })
-  .then(function(totalSupply) {
+  .then((totalSupply) => {
     const log =
         `
           ********* QUERY *********
@@ -111,7 +106,7 @@ const queryTotalSupply = async(from, token) => {
     console.log(log);
     return totalSupply;
   })
-  .catch(function(err) {
+  .catch((err) => {
     console.log(err);
     process.exit();
   });
@@ -129,7 +124,7 @@ const queryBalanceOf = async(from, token) => {
     gas: 4000000,
     gasPrice: 1,
   })
-  .then(function(balance) {
+  .then((balance) => {
     const log =
         `
           ********* QUERY *********
@@ -139,7 +134,7 @@ const queryBalanceOf = async(from, token) => {
     console.log(log);
     return balance;
   })
-  .catch(function(err) {
+  .catch((err) => {
     console.log(err);
     process.exit();
   });
@@ -159,13 +154,13 @@ const transfer = async(token, from, to, value) => {
     gas: 4000000,
     gasPrice: 1,
   })
-  .on('transactionHash', function(hash){ })
-  .on('confirmation', function(confirmationNumber, receipt){})
-  .on('receipt', function(receipt){
+  .on('transactionHash', (hash) => {})
+  .on('confirmation', (confirmationNumber, receipt) => {})
+  .on('receipt', (receipt) => {
     const log =
         `
           ********* TRANSFER RECEIPT: *********
-          Gas used: ${displayDecimal(receipt.gasUsed)}
+          Gas used: ${displayDecimal(receipt.gasUsed)} ${SYMBOL}
           From: ${from}
           To: ${to}
           Block number: ${receipt.blockNumber}

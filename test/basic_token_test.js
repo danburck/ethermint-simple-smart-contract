@@ -16,13 +16,13 @@ contract("BasicToken", accounts => {
     NAME,
     DECIMALS,
     SYMBOL
-  ]
-  let basicToken
+  ];
+  let basicToken;
 
   before(async () => {
     basicToken = await BasicToken.new(...ARGS);
     to = await web3.eth.accounts.create().address;
-  })
+  });
 
   describe("#constructor", async () => {
     it("should return a basic token instance ", async () => {
@@ -64,8 +64,8 @@ contract("BasicToken", accounts => {
   ]
 
   getterTests.forEach((test) => {
-    describe(`#${test.name}`, async () => {
-      it(`return the ${test.name}`, async() => {
+    describe(`#${test.name}`, () => {
+      it(`should return the ${test.name}`, async() => {
         let expected = await basicToken[test.name](...test.params);
         test.number && (expected = expected.toNumber());
         expect(expected).to.be.equal(test.actual);
