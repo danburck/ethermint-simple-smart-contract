@@ -65,14 +65,13 @@
 ## Phase 3 - Implement solution
 - Contract
   - [x] Compile and deploy an [ERC20 token smart contract](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) to the local network using truffle
-  - [ ] Unit tests => like model tests
-    - [ ] HOW DO I ADD MORE ADDRESSES FOR TESTING?
+  - [x] Unit tests => like model tests
 
 - Script
   - [x] Write a small client-side program to query and transfer token balances on the deployed smart contract using web3
     - [OutOfScope] Unit test for script => like API tests
 
-- [ ] Fix style and write comments
+- [x] Fix style and write comments
 
 
 
@@ -82,3 +81,4 @@ asd
 - Adding binaries to $PATH: [https://golang.org/doc/gopath_code#GOPATH](https://golang.org/doc/gopath_code#GOPATH)
 - Use grpcurl with `-plaintext` in front of ip when [inspecting gRPC services](https://ethermint.dev/quickstart/interact_node.html#grpcurl)
 	Use plain-text HTTP/2 when connecting to server (no TLS)
+
